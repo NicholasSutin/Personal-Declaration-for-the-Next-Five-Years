@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="lv_web.ico">
+    <title>Nicholas Sutin - Personal Declaration for the Next Five Years</title>
+    <style>
+        html, body {
+        height: 100%;
+        margin: 0;
+        }
+        body {
+        display: flex;           
+        justify-content: center;    
+        align-items: center;        
+        }
+        video {
+        max-height: 98vh;         
+        max-width: 100%;          
+        box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+
+    <video controls src="202505142008.mp4"></video>
+
+
+    <script>
+        const vid = document.querySelector('video');
+
+        function checkVideoOverflow() {
+            const winW = window.innerWidth;
+            const vidW = vid.getBoundingClientRect().width;
+            if (winW < vidW) {
+            console.log(`⚠️ Window (${winW}px) is less than video (${vidW}px)`);
+            }
+        }
+        // Run once on load (after metadata so dimensions are known)
+        vid.addEventListener('loadedmetadata', checkVideoOverflow);
+        // And again on every window resize
+        window.addEventListener('resize', checkVideoOverflow);
+    </script>
+</body>
+</html>
